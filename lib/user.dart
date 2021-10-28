@@ -8,17 +8,11 @@ class User {
 
   User(this._username, this._password);
 
-  String get username {
-    return _username;
-  }
+  String get username =>  _username;
 
-  String get password {
-    return _password;
-  }
+  String get password => _password;
 
-  List<Collectible> get listOfCollectibles {
-    return collectibleList;
-  }
+  List<Collectible> get listOfCollectibles => collectibleList;
 
   set username(String _username) {
     this._username = _username;
@@ -28,9 +22,7 @@ class User {
     this._password = _password;
   }
 
-  void addItem(String name, String description,
-      {double price = -1, String image = ""}) {
-    collectibleList
-        .add(Collectible(name, description, price: price, imagePath: image));
+  void addItem(String name, String description, {double price = -1, String image = ""}) {
+    collectibleList.add(Collectible(name, description, price: price, imagePath: image));
   }
 }

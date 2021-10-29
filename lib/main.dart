@@ -4,14 +4,14 @@ import 'collectible.dart';
 
 void main() {
   //These are tester classes for zack to use. He might need to move them
-  // User logan = User("Ignie", "Logan12345");
-  // logan.addItem('Spiderman Torment Part 1',
-  //     'This is the first issue of the Spiderman Torment story line.',
-  //     image: 'assets/SM_Comic.JPEG');
+  User logan = User("Ignie", "Logan12345");
+  logan.addItem('Spiderman Torment Part 1',
+      'This is the first issue of the Spiderman Torment story line.',
+      image: 'assets/SM_Comic.JPEG');
 
-  // logan.addItem('Childish Gambino Because of The Internet Vinyl',
-  //     'This is a vinyl of Donald Glover\'s second studio album.',
-  //     price: 49.95, image: 'assets/Childish_Vinyl');
+  logan.addItem('Childish Gambino Because of The Internet Vinyl',
+      'This is a vinyl of Donald Glover\'s second studio album.',
+      price: 49.95, image: 'assets/Childish_Vinyl');
 
   runApp(const MyApp());
 }

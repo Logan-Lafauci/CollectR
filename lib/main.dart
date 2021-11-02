@@ -71,46 +71,27 @@ class Home extends StatelessWidget {
                 backgroundColor: Colors.grey[900],
               ),
             ),
-            // SliverGrid(
-            //   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            //     maxCrossAxisExtent: 200.0,
-            //     mainAxisSpacing: 10.0,
-            //     crossAxisSpacing: 10.0,
-            //     childAspectRatio: 4.0,
-            //   ),
-            //   delegate: SliverChildBuilderDelegate(
-            //         (BuildContext context, int index) {
-            //       return Container(
-            //         alignment: Alignment.center,
-            //         color: Colors.teal[100 * (index % 9)],
-            //         child: Text('Grid Item $index'),
-            //       );
-            //     },
-            //     childCount: 20,
-            //   ),
-            // ),
 
-            SliverPadding(
-              padding: EdgeInsets.only(bottom: 8.0),
-              sliver: SliverList(
+            SliverFixedExtentList(
+              itemExtent: 50.0,
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return Container(
 
-                // itemExtent: 100.0,
-
-                delegate: SliverChildBuilderDelegate(
-
-                      (BuildContext context, int index) {
-
-                    return Container(
-
-                      alignment: Alignment.center,
-                      color: Colors.grey[800],
-                      child: Text('List Item $index'),
-
-                    );
-                  },
-                ),
+                    child: Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Container(
+                        alignment: Alignment.center,
+                        color: Colors.grey[600],
+                        child: Text('List Item $index'),
+                      ),
+                    ),
+                  );
+                },
               ),
             )
+
+
           ],
         ),
         color: Colors.black,
@@ -125,18 +106,18 @@ class Home extends StatelessWidget {
         child: Row(
           children: [
             IconButton(
-              icon: Icon(Icons.home), onPressed: () {},
+              icon: Icon(Icons.person_rounded), onPressed: () {},
               color: Colors.amber[400],
             ),
 
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.search), onPressed: () {},
+              icon: Icon(Icons.home), onPressed: () {},
               color: Colors.amber[400],
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.person_rounded), onPressed: () {},
+              icon: Icon(Icons.settings), onPressed: () {},
               color: Colors.amber[400],
             ),
 

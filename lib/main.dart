@@ -90,27 +90,50 @@ class Home extends StatelessWidget {
             //   ),
             // ),
 
-            SliverPadding(
-              padding: EdgeInsets.only(bottom: 8.0),
-              sliver: SliverList(
 
-                // itemExtent: 100.0,
 
-                delegate: SliverChildBuilderDelegate(
 
-                      (BuildContext context, int index) {
+            SliverFixedExtentList(
+              itemExtent: 100.0,
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
 
-                    return Container(
+                        child: Container(
 
-                      alignment: Alignment.center,
-                      color: Colors.grey[800],
-                      child: Text('List Item $index'),
+                          alignment: Alignment.center,
+                          color: Colors.grey[800],
+                          child: Text(
+                            'List Item $index',
+                            style: TextStyle(
+                              fontSize:  20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.amber[400],
+                              fontFamily: 'Cairo',
+                            ),
+                          ),
 
-                    );
-                  },
-                ),
+                        ),
+                      ),
+
+
+
+
+
+
+                  );
+                },
               ),
             )
+
+
+
+
+
+
+
           ],
         ),
         color: Colors.black,

@@ -3,14 +3,28 @@ import 'user.dart';
 import 'collectible.dart';
 
 void main() {
-  User logan = User("Ignie", "Logan12345");
-  logan.addItem('Spiderman Torment Part 1',
-      'This is the first issue of the Spiderman Torment story line.',
-      image: 'assets/SM_Comic.JPEG');
+  var allCollectibles = <Collectible>[];
 
-  logan.addItem('Childish Gambino Because of The Internet Vinyl',
-      'This is a vinyl of Donald Glover\'s second studio album.',
-      price: 49.95, image: 'assets/Childish_Vinyl');
+  void addCollectible(User poster, String name, String description, {double price = -1, String image = ""})
+  {
+    Collectible newPost = Collectible(name, description, poster.getUsername, price: price, imagePath: image);
+    allCollectibles.add(newPost);
+    poster.addItem(newPost);
+  }
+  
+  User logan = User("Ignie", "Logan12345");
+  addCollectible(logan, 'Spiderman Torment Part 1',
+    'This is the first issue of the Spiderman Torment story line.',
+    image: 'assets/SM_Comic.JPEG');
+
+  addCollectible(logan, 'Childish Gambino Because of The Internet Vinyl',
+    'This is a vinyl of Donald Glover\'s second studio album.',
+    price: 49.95, image: 'assets/Childish_Vinyl');
+
+  addCollectible(logan, 'Luffy Gear Four Funko POP',
+    'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.', 
+    price: 45, image:'assets/Luffy_Pop.JPEG');
+
   runApp(
       MaterialApp(
         home: Home(),

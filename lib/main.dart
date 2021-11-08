@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'user.dart';
 import 'collectible.dart';
 
-void main() {
-  var allCollectibles = <Collectible>[];
+var allCollectibles = <Collectible>[];
 
-  void addCollectible(User poster, String name, String description, {double price = -1, String image = ""})
+void main() {
+  // var allCollectibles = <Collectible>[];
+  void addCollectible(User poster, String name, String description, {double price = -1.0, String image = ""})
   {
+    print("Hi");
     Collectible newPost = Collectible(name, description, poster.getUsername, price: price, imagePath: image);
     allCollectibles.add(newPost);
     poster.addItem(newPost);
   }
-  
+
   User logan = User("Ignie", "Logan12345");
   addCollectible(logan, 'Spiderman Torment Part 1',
     'This is the first issue of the Spiderman Torment story line.',
@@ -22,7 +24,7 @@ void main() {
     price: 49.95, image: 'assets/Childish_Vinyl');
 
   addCollectible(logan, 'Luffy Gear Four Funko POP',
-    'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.', 
+    'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
     price: 45, image:'assets/Luffy_Pop.JPEG');
 
   runApp(
@@ -48,7 +50,7 @@ class CollectDisp extends StatelessWidget {
                   color: Colors.amber[400],
                 ),
                 Text(
-                  'Luffy Gear Four Funko POP',
+                  allCollectibles.elementAt(1).getName,
                   style: TextStyle(
                     fontSize:  20.0,
                     fontWeight: FontWeight.bold,
@@ -75,7 +77,7 @@ class CollectDisp extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(bottom: 10.0),
                               child: Text(
-                                'Luffy Gear Four Funko POP',
+                                allCollectibles.elementAt(1).getName,
                                 style: TextStyle(
                                   fontSize:  20.0,
                                   fontWeight: FontWeight.bold,
@@ -85,12 +87,14 @@ class CollectDisp extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              child: Row(
+                              child:
+
+                               Row(
                                 children: [
                                   Spacer(),
                                   Spacer(),
                                   Text(
-                                    'Ignie',
+                                    allCollectibles.elementAt(1).getOwner,
                                     style: TextStyle(
                                       fontSize:  13.0,
                                       fontWeight: FontWeight.bold,
@@ -99,15 +103,22 @@ class CollectDisp extends StatelessWidget {
                                     ),
                                   ),
                                   Spacer(),
-                                  Text(
-                                    '\$45.00',
+                                  Text((() {
+                                  if(allCollectibles.elementAt(2).getPrice == -1){
+                                    return '';}
+
+                                    return '\$'+allCollectibles.elementAt(2).getPrice.toString();}
+                                    )(),
                                     style: TextStyle(
-                                      fontSize:  13.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.amber[300],
-                                      fontFamily: 'Cairo',
-                                    ),
+                                    fontSize:  13.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.amber[300],
+                                    fontFamily: 'Cairo',
                                   ),
+                                  ),
+
+
+
                                   Spacer(),
                                   Spacer(),
                                 ],
@@ -117,7 +128,7 @@ class CollectDisp extends StatelessWidget {
                         ),
                         Spacer(),
                         Container(
-                          child: Image.asset('assets/Luffy_Pop.JPEG'),
+                          child: Image.asset(allCollectibles.elementAt(1).getImagePath),
                           height: 350,
                           width: 350,
                         ),
@@ -128,7 +139,7 @@ class CollectDisp extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.all(10.0),
                               child: Text(
-                                'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
+                                allCollectibles.elementAt(1).getDescription,
                                 style: TextStyle(
                                   fontSize:  15.0,
                                   fontWeight: FontWeight.bold,
@@ -166,58 +177,59 @@ class Home extends StatelessWidget {
 
 
 
-      body: Container(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverPadding(
-              padding: EdgeInsets.only(bottom: 8.0),
-              sliver: SliverAppBar(
-                pinned: true,
-                expandedHeight: 250.0,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
-                    'CollectR',
-                    style: TextStyle(
-                      fontSize:  20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.amber[400],
-                      fontFamily: 'Cairo',
-                    ),
-                  ),
-                  centerTitle: true,
-                ),
-                backgroundColor: Colors.grey[900],
-              ),
-            ),
-            SliverFixedExtentList(
-              itemExtent: 100.0,
-              delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return Container(
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Container(
-                          alignment: Alignment.center,
-                          color: Colors.grey[800],
-                          child: Text(
-                            'List Item $index',
-                            style: TextStyle(
-                              fontSize:  20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.amber[400],
-                              fontFamily: 'Cairo',
-                            ),
-                          ),
-                        ),
-                      ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-        color: Colors.black,
-      ),
+      body: CollectDisp(),
+      // Container(
+      //   child: CustomScrollView(
+      //     slivers: <Widget>[
+      //       SliverPadding(
+      //         padding: EdgeInsets.only(bottom: 8.0),
+      //         sliver: SliverAppBar(
+      //           pinned: true,
+      //           expandedHeight: 250.0,
+      //           flexibleSpace: FlexibleSpaceBar(
+      //             title: Text(
+      //               'CollectR',
+      //               style: TextStyle(
+      //                 fontSize:  20.0,
+      //                 fontWeight: FontWeight.bold,
+      //                 color: Colors.amber[400],
+      //                 fontFamily: 'Cairo',
+      //               ),
+      //             ),
+      //             centerTitle: true,
+      //           ),
+      //           backgroundColor: Colors.grey[900],
+      //         ),
+      //       ),
+      //       SliverFixedExtentList(
+      //         itemExtent: 100.0,
+      //         delegate: SliverChildBuilderDelegate(
+      //               (BuildContext context, int index) {
+      //             return Container(
+      //                 child: Padding(
+      //                   padding: EdgeInsets.all(8.0),
+      //                   child: Container(
+      //                     alignment: Alignment.center,
+      //                     color: Colors.grey[800],
+      //                     child: Text(
+      //                       'List Item $index',
+      //                       style: TextStyle(
+      //                         fontSize:  20.0,
+      //                         fontWeight: FontWeight.bold,
+      //                         color: Colors.amber[400],
+      //                         fontFamily: 'Cairo',
+      //                       ),
+      //                     ),
+      //                   ),
+      //                 ),
+      //             );
+      //           },
+      //         ),
+      //       )
+      //     ],
+      //   ),
+      //   color: Colors.black,
+      // ),
 
 
 

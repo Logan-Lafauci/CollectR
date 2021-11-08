@@ -33,7 +33,126 @@ void main() {
 }
 
 
+class CollectDisp extends StatelessWidget {
+  const CollectDisp ({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back), onPressed: () {},
+                  color: Colors.amber[400],
+                ),
+                Text(
+                  'Luffy Gear Four Funko POP',
+                  style: TextStyle(
+                    fontSize:  20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amber[300],
+                    fontFamily: 'Cairo',
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Colors.grey[850],
+          ),
+          body: Container(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top:    15.0,
+                bottom: 15.0,
+              ),
+              child: Center(
+                  child: Container(
+                    child: ListView(
+                      children: <Widget>[
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10.0),
+                              child: Text(
+                                'Luffy Gear Four Funko POP',
+                                style: TextStyle(
+                                  fontSize:  20.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.amber[300],
+                                  fontFamily: 'Cairo',
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Row(
+                                children: [
+                                  Spacer(),
+                                  Spacer(),
+                                  Text(
+                                    'Ignie',
+                                    style: TextStyle(
+                                      fontSize:  13.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.amber[300],
+                                      fontFamily: 'Cairo',
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    '\$45.00',
+                                    style: TextStyle(
+                                      fontSize:  13.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.amber[300],
+                                      fontFamily: 'Cairo',
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Spacer(),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer(),
+                        Container(
+                          child: Image.asset('assets/Luffy_Pop.JPEG'),
+                          height: 350,
+                          width: 350,
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: Text(
+                                'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
+                                style: TextStyle(
+                                  fontSize:  15.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.amber[300],
+                                  fontFamily: 'Cairo',
+                                ),
+                              ),
+                            ),
+                            color: Colors.grey[900],
+                          ),
+                        ),
+                      ],
+                    ),
+                    color: Colors.grey[850],
+                  )
+              ),
+            ),
+            color: Colors.black,
+          )
+      ),
+      color: Colors.grey[850],
+    );
+  }
+}
 
 
 class Home extends StatelessWidget {
@@ -42,21 +161,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //  title: Text(
-      //     'CollectR',
-      //     style: TextStyle(
-      //       fontSize:  20.0,
-      //       fontWeight: FontWeight.bold,
-      //       color: Colors.amber[300],
-      //       fontFamily: 'Cairo',
-      //     ),
-      //
-      //   ),
-      //   centerTitle: true,
-      //   backgroundColor: Colors.grey[900],
-      //
-      // ),
+
 
 
 
@@ -80,33 +185,10 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   centerTitle: true,
-
                 ),
                 backgroundColor: Colors.grey[900],
               ),
             ),
-            // SliverGrid(
-            //   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            //     maxCrossAxisExtent: 200.0,
-            //     mainAxisSpacing: 10.0,
-            //     crossAxisSpacing: 10.0,
-            //     childAspectRatio: 4.0,
-            //   ),
-            //   delegate: SliverChildBuilderDelegate(
-            //         (BuildContext context, int index) {
-            //       return Container(
-            //         alignment: Alignment.center,
-            //         color: Colors.teal[100 * (index % 9)],
-            //         child: Text('Grid Item $index'),
-            //       );
-            //     },
-            //     childCount: 20,
-            //   ),
-            // ),
-
-
-
-
             SliverFixedExtentList(
               itemExtent: 100.0,
               delegate: SliverChildBuilderDelegate(
@@ -114,9 +196,7 @@ class Home extends StatelessWidget {
                   return Container(
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
-
                         child: Container(
-
                           alignment: Alignment.center,
                           color: Colors.grey[800],
                           child: Text(
@@ -128,26 +208,12 @@ class Home extends StatelessWidget {
                               fontFamily: 'Cairo',
                             ),
                           ),
-
                         ),
                       ),
-
-
-
-
-
-
                   );
                 },
               ),
             )
-
-
-
-
-
-
-
           ],
         ),
         color: Colors.black,

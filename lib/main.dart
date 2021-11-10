@@ -21,7 +21,7 @@ void main() {
 
   addCollectible(logan, 'Childish Gambino Because of The Internet Vinyl',
     'This is a vinyl of Donald Glover\'s second studio album.',
-    price: 49.95, image: 'assets/Childish_Vinyl');
+    price: 49.95, image: 'assets/Childish_Vinyl.JPEG');
 
   addCollectible(logan, 'Luffy Gear Four Funko POP',
     'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',

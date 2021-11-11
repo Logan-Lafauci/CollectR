@@ -116,9 +116,6 @@ class CollectDisp extends StatelessWidget {
                                     fontFamily: 'Cairo',
                                   ),
                                   ),
-
-
-
                                   Spacer(),
                                   Spacer(),
                                 ],
@@ -174,62 +171,80 @@ class Home extends StatelessWidget {
     return Scaffold(
 
 
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            'CollectR',
+            style: TextStyle(
+              fontSize:  20.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.amber[400],
+              fontFamily: 'Cairo',
+            ),
+          ),
+        ),
+
+        backgroundColor: Colors.grey[900],
+      ),
 
 
 
-      body: CollectDisp(),
-      // Container(
-      //   child: CustomScrollView(
-      //     slivers: <Widget>[
-      //       SliverPadding(
-      //         padding: EdgeInsets.only(bottom: 8.0),
-      //         sliver: SliverAppBar(
-      //           pinned: true,
-      //           expandedHeight: 250.0,
-      //           flexibleSpace: FlexibleSpaceBar(
-      //             title: Text(
-      //               'CollectR',
-      //               style: TextStyle(
-      //                 fontSize:  20.0,
-      //                 fontWeight: FontWeight.bold,
-      //                 color: Colors.amber[400],
-      //                 fontFamily: 'Cairo',
-      //               ),
-      //             ),
-      //             centerTitle: true,
-      //           ),
-      //           backgroundColor: Colors.grey[900],
-      //         ),
-      //       ),
-      //       SliverFixedExtentList(
-      //         itemExtent: 100.0,
-      //         delegate: SliverChildBuilderDelegate(
-      //               (BuildContext context, int index) {
-      //             return Container(
-      //                 child: Padding(
-      //                   padding: EdgeInsets.all(8.0),
-      //                   child: Container(
-      //                     alignment: Alignment.center,
-      //                     color: Colors.grey[800],
-      //                     child: Text(
-      //                       'List Item $index',
-      //                       style: TextStyle(
-      //                         fontSize:  20.0,
-      //                         fontWeight: FontWeight.bold,
-      //                         color: Colors.amber[400],
-      //                         fontFamily: 'Cairo',
-      //                       ),
-      //                     ),
-      //                   ),
-      //                 ),
-      //             );
-      //           },
-      //         ),
-      //       )
-      //     ],
-      //   ),
-      //   color: Colors.black,
-      // ),
+      body: Container(
+        child: Padding(
+          padding: EdgeInsets.only(top: 8.0),
+
+          child: Container(
+            child: Expanded(
+              child: ListView.builder(
+                itemCount: allCollectibles.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        alignment: Alignment.center,
+                        color: Colors.grey[800],
+                        child: Column(
+                          children: [
+                            Text(
+                              allCollectibles.elementAt(index).getName,
+                              style: TextStyle(
+                                fontSize:  15.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber[400],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
+                            Container(
+                              child: Image.asset(allCollectibles.elementAt(index).getImagePath),
+                              height: 350,
+                              width: 350,
+                            ),
+
+
+                          ],
+                        ),
+
+
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+
+
+
+
+
+          ),
+
+        ),
+        color: Colors.black,
+      ),
+
+
 
 
 

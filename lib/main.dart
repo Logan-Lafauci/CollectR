@@ -35,32 +35,34 @@ void main() {
 }
 
 
-class CollectDisp extends StatelessWidget {
-  const CollectDisp ({Key? key}) : super(key: key);
 
+
+class CollectDisp extends StatefulWidget {
+
+  const CollectDisp({Key? key}) : super(key: key);
+
+  @override
+  _CollectDispState createState() => _CollectDispState();
+}
+
+class _CollectDispState extends State<CollectDisp> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
           appBar: AppBar(
-            title: Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back), onPressed: () {},
-                  color: Colors.amber[400],
+            title: Center(
+              child: Text(
+                'CollectR',
+                style: TextStyle(
+                  fontSize:  20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.amber[300],
+                  fontFamily: 'Cairo',
                 ),
-                Text(
-                  allCollectibles.elementAt(1).getName,
-                  style: TextStyle(
-                    fontSize:  20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber[300],
-                    fontFamily: 'Cairo',
-                  ),
-                ),
-              ],
+              ),
             ),
-            backgroundColor: Colors.grey[850],
+            backgroundColor: Colors.grey[900],
           ),
           body: Container(
             child: Padding(
@@ -87,9 +89,7 @@ class CollectDisp extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              child:
-
-                               Row(
+                              child: Row(
                                 children: [
                                   Spacer(),
                                   Spacer(),
@@ -104,17 +104,17 @@ class CollectDisp extends StatelessWidget {
                                   ),
                                   Spacer(),
                                   Text((() {
-                                  if(allCollectibles.elementAt(2).getPrice == -1){
-                                    return '';}
+                                    if(allCollectibles.elementAt(2).getPrice == -1){
+                                      return '';}
 
                                     return '\$'+allCollectibles.elementAt(2).getPrice.toString();}
-                                    )(),
+                                  )(),
                                     style: TextStyle(
-                                    fontSize:  13.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber[300],
-                                    fontFamily: 'Cairo',
-                                  ),
+                                      fontSize:  13.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.amber[300],
+                                      fontFamily: 'Cairo',
+                                    ),
                                   ),
                                   Spacer(),
                                   Spacer(),
@@ -148,6 +148,30 @@ class CollectDisp extends StatelessWidget {
                             color: Colors.grey[900],
                           ),
                         ),
+
+                          Container(
+
+                            child: TextButton(
+                              onPressed: (){},
+                              child: Text(
+                                'Amogus',
+                                style: TextStyle(
+                                  fontSize:  15.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey[900],
+                                  fontFamily: 'Cairo',
+                                ),
+                              ),
+                            ),
+                            color: Colors.amber[300],
+
+                          ),
+
+
+
+
+
+
                       ],
                     ),
                     color: Colors.grey[850],
@@ -155,12 +179,41 @@ class CollectDisp extends StatelessWidget {
               ),
             ),
             color: Colors.black,
-          )
+          ),
+          bottomNavigationBar: BottomAppBar(
+            child: Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.home), onPressed: () {},
+                  color: Colors.amber[400],
+                ),
+
+                Spacer(),
+                IconButton(
+                  icon: Icon(Icons.search), onPressed: () {},
+                  color: Colors.amber[400],
+                ),
+                Spacer(),
+                IconButton(
+                  icon: Icon(Icons.person_rounded), onPressed: () {},
+                  color: Colors.amber[400],
+                ),
+
+              ],
+            ),
+            color: Colors.grey[900],
+          ),
+
       ),
       color: Colors.grey[850],
     );
   }
 }
+
+
+
+
+
 
 
 class Home extends StatelessWidget {
@@ -204,26 +257,38 @@ class Home extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         color: Colors.grey[800],
-                        child: Column(
-                          children: [
-                            Text(
-                              allCollectibles.elementAt(index).getName,
-                              style: TextStyle(
-                                fontSize:  15.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.amber[400],
-                                fontFamily: 'Cairo',
+                        child: TextButton(
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CollectDisp()
+
+                            ),
+                            );
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                allCollectibles.elementAt(index).getName,
+                                style: TextStyle(
+                                  fontSize:  15.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.amber[400],
+                                  fontFamily: 'Cairo',
+                                ),
                               ),
-                            ),
-                            Container(
-                              child: Image.asset(allCollectibles.elementAt(index).getImagePath),
-                              height: 350,
-                              width: 350,
-                            ),
+                              Container(
+                                child: Image.asset(allCollectibles.elementAt(index).getImagePath),
+                                height: 350,
+                                width: 350,
+                              ),
 
 
-                          ],
+                            ],
+                          ),
                         ),
+
 
 
                       ),

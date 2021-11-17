@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'user.dart';
 import 'collectible.dart';
@@ -334,6 +334,80 @@ class Home extends StatelessWidget {
               color: Colors.amber[400],
             ),
 
+            Spacer(),
+
+            IconButton(
+              icon: Icon(Icons.add), onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Container(
+                        child: Scaffold(
+
+                          body: Container(),                      //this is your container logan
+
+                          bottomNavigationBar: BottomAppBar(
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.home), onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Home(
+
+
+                                        )
+
+                                    ),
+                                  );
+                                },
+                                  color: Colors.amber[400],
+                                ),
+                                Spacer(),
+                                IconButton(
+                                  icon: Icon(Icons.search), onPressed: () {
+                                  showSearch(context: context, delegate: DataSearch());
+                                },
+                                  color: Colors.amber[400],
+                                ),
+                                Spacer(),
+
+                                IconButton(
+                                  icon: Icon(Icons.add), onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Container(
+
+
+                                        )
+
+                                    ),
+                                  );
+                                },
+                                  color: Colors.amber[400],
+                                ),
+
+                                Spacer(),
+                                IconButton(
+                                  icon: Icon(Icons.person_rounded), onPressed: () {},
+                                  color: Colors.amber[400],
+                                ),
+
+                              ],
+                            ),
+                            color: Colors.grey[900],
+                          ),
+                        )
+
+                      )
+
+                  ),
+                );
+              },
+              color: Colors.amber[400],
+            ),
 
             Spacer(),
             IconButton(

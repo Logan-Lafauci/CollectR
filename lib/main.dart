@@ -7,16 +7,14 @@ import 'add.dart';
 
 var allCollectibles = <Collectible>[];
 
-void main() {
-  // var allCollectibles = <Collectible>[];
-  void addCollectible(User poster, String name, String description, {double price = -1.0, String image = ""})
-  {
-    print("Hey");
-    Collectible newPost = Collectible(name, description, poster.getUsername, price: price, imagePath: image);
-    allCollectibles.add(newPost);
-    poster.addItem(newPost);
-  }
+void addCollectible(User poster, String name, String description, {double price = -1.0, String image = ""}){
+  print("Hey");
+  Collectible newPost = Collectible(name, description, poster.getUsername, price: price, imagePath: image);
+  allCollectibles.add(newPost);
+  poster.addItem(newPost);
+}
 
+void main() {
   User logan = User("Ignie", "Logan12345");
   addCollectible(logan, 'Spiderman Torment Part 1',
       'This is the first issue of the Spiderman Torment story line.',

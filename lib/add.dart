@@ -62,7 +62,13 @@ class AddScreenState extends State<Add> {
       ],
       maxLength: 10,
       onSaved: (value) {
-        _price = double.parse(value!);
+        if (value == null || value.isEmpty) {
+          _price = -1.0;
+        }
+        else
+        {
+          _price = double.parse(value);
+        }
       },
     );
   }
@@ -113,8 +119,15 @@ class AddScreenState extends State<Add> {
                     _formKey.currentState!.save();
 
                     addCollectible(owner, _name, _description, price: _price, image: _imagePath);
-                    //This works but Zack needs to update the list 
-                    //maybe update it and return user to home screen with submit button
+                    
+
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Home()
+
+                            ),
+                    );
                     //make this page look bettter 
                     //fix the bug when the user presses the add button again
                     //Send to API

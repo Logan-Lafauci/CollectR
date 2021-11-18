@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'appbar_bottom.dart';
 import 'main.dart';
 
 class CollectDisp extends StatelessWidget {
@@ -142,29 +142,7 @@ class CollectDisp extends StatelessWidget {
           ),
           color: Colors.black,
         ),
-        bottomNavigationBar: BottomAppBar(
-          child: Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.home), onPressed: () {},
-                color: Colors.amber[400],
-              ),
-
-              Spacer(),
-              IconButton(
-                icon: Icon(Icons.search), onPressed: () {},
-                color: Colors.amber[400],
-              ),
-              Spacer(),
-              IconButton(
-                icon: Icon(Icons.person_rounded), onPressed: () {},
-                color: Colors.amber[400],
-              ),
-
-            ],
-          ),
-          color: Colors.grey[900],
-        ),
+        bottomNavigationBar: const AppBarBot(),
 
       ),
       color: Colors.grey[850],

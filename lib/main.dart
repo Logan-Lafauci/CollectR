@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'user.dart';
 import 'collectible.dart';
 import 'collect_disp.dart';
-import 'add.dart';
+import 'appbar_bottom.dart';
+import 'search.dart';
+
 
 var allCollectibles = <Collectible>[];
 
@@ -27,25 +29,24 @@ void main() {
   addCollectible(logan, 'Luffy Gear Four Funko POP',
       'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
       price: 45, image:'assets/Luffy_Pop.JPEG');
-  
+
   User jai = User("Kahlese", "Jai62120");
   addCollectible(jai, 'Deadpool and Unicorn KeyChain',
-	  'This is a Deadpool and Unicorn KeyChain.',
-	   price:15, image:'assets/Deadpool_Keychain.jpg');
-  
+      'This is a Deadpool and Unicorn KeyChain.',
+      price:15, image:'assets/Deadpool_Keychain.jpg');
+
   addCollectible(jai, 'Amoung Us Plushie',
-	  'This is one out of the 8 Amoung Plushie Collection. In great condition, with a little dust.',
-	  price: 17.95, image: 'assets/AmongUs_Plushie.jpg');
-  
+      'This is one out of the 8 Amoung Plushie Collection. In great condition, with a little dust.',
+      price: 17.95, image: 'assets/AmongUs_Plushie.jpg');
+
   User tom = User("Mot", "Tom36589");
   addCollectible(tom, 'Ms.Marvel Comic Book',
-     'Ms.Marvel Comic Book: The Lethal Lizard From Below , It\'s in great condition.',
+      'Ms.Marvel Comic Book: The Lethal Lizard From Below , It\'s in great condition.',
       price: 9.99, image: 'assets/Ms.Marvel_ComicBook.jpg');
-  
-  addCollectible(tom, 'Inosuke Hanshibira Funko Pop', 
-     'It has been kept inside the box in great conditon and undamaged',
-      price: 59.99, image: 'assets/InosukeHashibira_Pop.jpg');
 
+  addCollectible(tom, 'Inosuke Hanshibira Funko Pop',
+      'It has been kept inside the box in great conditon and undamaged',
+      price: 59.99, image: 'assets/InosukeHashibira_Pop.jpg');
 
   runApp(
       MaterialApp(
@@ -164,108 +165,7 @@ class Home extends StatelessWidget {
 
 
 
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            IconButton(
-              icon: Icon(Icons.home), onPressed: () {},
-              color: Colors.amber[400],
-            ),
-
-
-            Spacer(),
-            IconButton(
-              icon: Icon(Icons.search), onPressed: () {
-                showSearch(context: context, delegate: DataSearch());
-            },
-              color: Colors.amber[400],
-            ),
-
-            Spacer(),
-
-            IconButton(
-              icon: Icon(Icons.add), onPressed: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Container(
-                        child: Scaffold(
-
-                          body: Add(),                      //this is your container logan
-
-                          bottomNavigationBar: BottomAppBar(
-                            child: Row(
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.home), onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Home(
-
-
-                                        )
-
-                                    ),
-                                  );
-                                },
-                                  color: Colors.amber[400],
-                                ),
-                                Spacer(),
-                                IconButton(
-                                  icon: Icon(Icons.search), onPressed: () {
-                                  showSearch(context: context, delegate: DataSearch());
-                                },
-                                  color: Colors.amber[400],
-                                ),
-                                Spacer(),
-
-                                IconButton(
-                                  icon: Icon(Icons.add), onPressed: (){
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Container(
-
-
-                                        )
-
-                                    ),
-                                  );
-                                },
-                                  color: Colors.amber[400],
-                                ),
-
-                                Spacer(),
-                                IconButton(
-                                  icon: Icon(Icons.person_rounded), onPressed: () {},
-                                  color: Colors.amber[400],
-                                ),
-
-                              ],
-                            ),
-                            color: Colors.grey[900],
-                          ),
-                        )
-
-                      )
-
-                  ),
-                );
-              },
-              color: Colors.amber[400],
-            ),
-
-            Spacer(),
-            IconButton(
-              icon: Icon(Icons.person_rounded), onPressed: () {},
-              color: Colors.amber[400],
-            ),
-
-          ],
-        ),
-        color: Colors.grey[900],
-      ),
+      bottomNavigationBar: AppBarBot(),
 
 
 
@@ -277,83 +177,3 @@ class Home extends StatelessWidget {
   }
 }
 
-
-
-class DataSearch extends SearchDelegate<String?> {
-
-
-  final recentSearches = [
-    "Lego AT-TE",
-    "Saul Goodman Funko Pop",
-    "Vintage CD",
-    "Spiderman Torment Part 1",
-  ];
-
-  final testCollectibles = [
-    "Lego AT-TE",
-    "Saul Goodman Funko Pop",
-    "Vintage CD",
-    "Fortnite Chungus",
-    "Spiderman Torment Part 1",
-    "Luffy Gear Four Funko POP",
-    "Childish Gambino Because of The Internet Vinyl",
-    "Five Nights at Freddys Plushy",
-    "Scooby Doo Bobblehead",
-    "Babe Ruth Baseball Card",
-    "Jack Winstead Stop Sign",
-    "Funko Pop",
-    "Vinyl",
-  ];
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-          icon: Icon(Icons.clear),
-        onPressed: () {
-      query = "";
-    })
-    ];
-  }
-
-  String? fix = null;
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-        icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_arrow,
-          progress: transitionAnimation,
-    ),
-    onPressed: () {
-      close(context, null);
-    });
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-   final List suggestionList = query.isEmpty ? recentSearches : testCollectibles.where((p) => p.startsWith(query)).toList();
-   
-   return ListView.builder(
-       itemBuilder: (context, index) => ListTile(
-     leading: const Icon(Icons.location_city),
-         title: RichText(text: TextSpan(
-           text: suggestionList[index].substring(0,query.length),
-           style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-             children: [
-               TextSpan(
-             text: suggestionList[index].substring(query.length),
-           style: TextStyle(color: Colors.grey))
-         ],
-       ),
-      ),
-    ),
-    itemCount: suggestionList.length,
-   );
-  }
-}

@@ -27,6 +27,25 @@ void main() {
   addCollectible(logan, 'Luffy Gear Four Funko POP',
       'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
       price: 45, image:'assets/Luffy_Pop.JPEG');
+  
+  User jai = User("Kahlese", "Jai62120");
+  addCollectible(jai, 'Deadpool and Unicorn KeyChain',
+	  'This is a Deadpool and Unicorn KeyChain.',
+	   price:15, image:'assets/Deadpool_Keychain.jpg');
+  
+   addCollectable(jai, 'Amoung Us Plushie',
+	  'This is one out of the 8 Amoung Plushie Collection. In great condition, with a little dust.'
+	  price: 17.95, image: 'assets/AmoungUs_Plushie.jpg');
+  
+  User tom = User("Mot", "Tom36589");
+  addCollectible(tom, 'Ms.Marvel Comic Book',
+     'Ms.Marvel Comic Book: The Lethal Lizard From Below , It\'s in great condition.'
+      price: 9.99, image: 'assets/Ms.Marvel_ComicBook.jpg');
+  
+  addCollectible(tom, 'Inosuke Hanshibira Funko Pop', 
+     'It has been kept inside the box in great conditon and undamaged',
+      price: 59.99, image: 'assets/InosukeHashibria_Pop.jpg');
+
 
   runApp(
       MaterialApp(

@@ -59,14 +59,14 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/AmoungUs_Plushiw.jpg
+    - assets/AmongUs_Plushie.jpg
     - assets/Beast_Pop.JPEG
     - assets/Childish_Vinyl.JPEG
     - assets/Deadpool_KeyChain.jpg
     - assets/SM_Comic.JPEG
     - assets/CM_Manga.jpg
     - assets/Igor_Vinyl.JPEG
-    - assets/InosukeHashibria_Pop.jpg
+    - assets/InosukeHashibira_Pop.jpg
     - assets/KC_Vinyl.JPEG
     - assets/Luffy_Pop.JPEG
     - assets/MM_Comic.JPEG
@@ -75,7 +75,7 @@ flutter:
     - assets/Red_Pop.JPEG
     - assets/SGA_Comic.jpg
     - assets/Titan_Pop.JPEG
-    - assets/logo_img.jpg
+    - assets/logo_image.jpg
     
 
   #   - images/a_dot_burr.jpeg

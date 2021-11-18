@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'user.dart';
 import 'collectible.dart';
-import 'collect-disp.dart';
+import 'collect_disp.dart';
 import 'add.dart';
 
 var allCollectibles = <Collectible>[];
@@ -91,7 +91,7 @@ class Home extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CollectDisp()
+                                  builder: (context) => CollectDisp(index)
 
                               ),
                             );

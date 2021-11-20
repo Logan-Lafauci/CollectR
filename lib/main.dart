@@ -9,44 +9,61 @@ import 'search.dart';
 
 var allCollectibles = <Collectible>[];
 
-void addCollectible(User poster, String name, String description, {double price = -1.0, String image = ""}){
+void addCollectible(User poster, String name, String description, String imagePath, String tag, {double price = -1.0}){
   print("Hey");
-  Collectible newPost = Collectible(name, description, poster.getUsername, price: price, imagePath: image);
+  Collectible newPost = Collectible(name, description, poster.getUsername, imagePath, tag, price: price);
   allCollectibles.add(newPost);
   poster.addItem(newPost);
 }
 
+/*So far the only tags we have are BOOK, MUSIC, FIGURE, ETC. can add more and 
+* will probably mess around with it
+*/
+
 void main() {
-  User logan = User("Ignie", "Logan12345");
+  User logan = User("Ignie", "Logan12345", 85);
   addCollectible(logan, 'Spiderman Torment Part 1',
       'This is the first issue of the Spiderman Torment story line.',
-      image: 'assets/SM_Comic.JPEG');
+      'assets/SM_Comic.JPEG', "BOOK");
 
   addCollectible(logan, 'Childish Gambino Because of The Internet Vinyl',
-      'This is a vinyl of Donald Glover\'s second studio album.',
-      price: 49.95, image: 'assets/Childish_Vinyl.JPEG');
+      'This is a vinyl of Donald Glover\'s second studio album.', 'assets/Childish_Vinyl.JPEG',
+      "MUSIC", price: 49.95);
 
   addCollectible(logan, 'Luffy Gear Four Funko POP',
       'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
-      price: 45, image:'assets/Luffy_Pop.JPEG');
+       'assets/Luffy_Pop.JPEG', "FIGURE", price: 45);
 
-  User jai = User("Kahlese", "Jai62120");
+  User jai = User("Kahlese", "Jai62120", 90);
   addCollectible(jai, 'Deadpool and Unicorn KeyChain',
-      'This is a Deadpool and Unicorn KeyChain.',
-      price:15, image:'assets/Deadpool_Keychain.jpg');
+      'This is a Deadpool and Unicorn KeyChain.', 'assets/Deadpool_Keychain.jpg',
+      "ETC", price:15);
 
   addCollectible(jai, 'Amoung Us Plushie',
       'This is one out of the 8 Amoung Plushie Collection. In great condition, with a little dust.',
-      price: 17.95, image: 'assets/AmongUs_Plushie.jpg');
+      'assets/AmongUs_Plushie.jpg', "ETC", price: 17.95);
 
-  User tom = User("Mot", "Tom36589");
+  User tom = User("Mot", "Tom36589", 47);
   addCollectible(tom, 'Ms.Marvel Comic Book',
       'Ms.Marvel Comic Book: The Lethal Lizard From Below , It\'s in great condition.',
-      price: 9.99, image: 'assets/Ms.Marvel_ComicBook.jpg');
+      'assets/Ms.Marvel_ComicBook.jpg', "BOOK", price: 9.99,);
 
   addCollectible(tom, 'Inosuke Hanshibira Funko Pop',
-      'It has been kept inside the box in great conditon and undamaged',
-      price: 59.99, image: 'assets/InosukeHashibira_Pop.jpg');
+      'It has been kept inside the box in great conditon and undamaged', 
+      'assets/InosukeHashibira_Pop.jpg', "FIGURE", price: 59.99);
+
+  User donald = User("MusicGuy01", "it'smedonald", 95);
+  addCollectible(donald, 'Igor Vinyl',
+      'This is a vinyl of Tyler, the Creator\'s Hit album Igor. Has the tracks like boy is a gun, Earfquake, and more.',
+      'assets/Igor_Vinyl.JPEG', "MUSIC", price: 49.95);
+
+  addCollectible(donald, 'In the Court of the Crimson King Vinyl',
+      'This is a vinyl of In the Court of the Crimson King created by the band King Crimson',
+      'assets/KC_Vinyl.JPEG', "MUSIC", price: 49.95);
+
+  addCollectible(logan, 'Chainsawman volume 1-3',
+      'This is the first three volumes of chainsaw man. This is a amazing series created by Tatsuki Fujimoto',
+      'assets/CM_Manga.jpg', "BOOK");
 
   runApp(
       MaterialApp(

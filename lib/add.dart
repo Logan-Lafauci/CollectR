@@ -12,11 +12,12 @@ class Add extends StatefulWidget {
 }
 
 class AddScreenState extends State<Add> {
-  User owner = User("tester", "password");
+  User owner = User("tester", "password", 99);
   String _name = "";
   String _description = "";
   double _price = -1.0;
   String _imagePath = "";
+  String _tag = "";
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -66,6 +67,31 @@ class AddScreenState extends State<Add> {
       },
       onSaved: (value) {
         _description = value!;
+      },
+    );
+  }
+
+  Widget _buildTag(){
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Tag',
+        labelStyle: TextStyle(
+          fontSize:  16.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.amber[300],
+          fontFamily: 'Cairo',
+        ),
+      ),
+      maxLength: 8,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Tag is Required';
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        _tag = value!;
       },
     );
   }
@@ -156,6 +182,7 @@ class AddScreenState extends State<Add> {
                     children: <Widget>[
                       _buildName(),
                       _buildDescription(),
+                      _buildTag(),
                       _buildPrice(),
                       _buildImagePath(),
                       SizedBox(height: 100),
@@ -178,7 +205,7 @@ class AddScreenState extends State<Add> {
 
                             _formKey.currentState!.save();
 
-                            addCollectible(owner, _name, _description, price: _price, image: _imagePath);
+                            addCollectible(owner, _name, _description, _imagePath, _tag, price: _price);
 
 
                             Navigator.push(

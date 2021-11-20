@@ -16,6 +16,18 @@ void addCollectible(User poster, String name, String description, String imagePa
   poster.addItem(newPost);
 }
 
+List<Collectible> filter(String tag){
+  var filteredList = <Collectible>[];
+  for(int i = 0; i < allCollectibles.length; i++)
+  {
+    if(allCollectibles.elementAt(i).getTag == tag)
+    {
+      filteredList.add(allCollectibles.elementAt(i));
+    }
+  }
+  return filteredList; 
+}
+
 /*So far the only tags we have are BOOK, MUSIC, FIGURE, ETC. can add more and 
 * will probably mess around with it
 */
@@ -64,6 +76,16 @@ void main() {
   addCollectible(logan, 'Chainsawman volume 1-3',
       'This is the first three volumes of chainsaw man. This is a amazing series created by Tatsuki Fujimoto',
       'assets/CM_Manga.jpg', "BOOK");
+
+  allCollectibles = filter("BOOK");
+  /*This is for testing filter and it works!!
+  * when using it we should create a screen full of the tags we can select from
+  * then we create a new list instead of reassigning all collectibles
+  * Collect Disp will have to take in another argument which is this new filtered list
+  * If you want to mess with it change the parameter to another tag
+  * for all collectibles don't run the filter method.
+  * If you have more questions ask me.
+  */
 
   runApp(
       MaterialApp(

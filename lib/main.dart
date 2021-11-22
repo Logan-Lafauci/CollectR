@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'user.dart';
 import 'collectible.dart';
@@ -17,11 +16,17 @@ void addCollectible(User poster, String name, String description, String imagePa
 
 List<Collectible> filter(String tag){
   var filteredList = <Collectible>[];
-  for(int i = 0; i < allCollectibles.length; i++)
+  if(tag == 'ALL')
   {
-    if(allCollectibles.elementAt(i).getTag == tag)
+    filteredList = allCollectibles;
+  }
+  else{
+    for(int i = 0; i < allCollectibles.length; i++)
     {
-      filteredList.add(allCollectibles.elementAt(i));
+      if(allCollectibles.elementAt(i).getTag == tag)
+      {
+        filteredList.add(allCollectibles.elementAt(i));
+      }
     }
   }
   return filteredList; 
@@ -342,4 +347,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'appbar_bottom.dart';
 import 'main.dart';
+import 'feed.dart';
 
 class CollectDisp extends StatelessWidget {
   final int index;
@@ -48,7 +49,7 @@ class CollectDisp extends StatelessWidget {
                           Container(
 
                             child: Image.asset(
-                              allCollectibles.elementAt(index).getImagePath,
+                              filteredList.elementAt(index).getImagePath,
                               fit: BoxFit.fitWidth,
                             ),
 
@@ -78,10 +79,10 @@ class CollectDisp extends StatelessWidget {
                                 Padding(
                                   padding: EdgeInsets.only(left: 30.0, ),
                                   child: Text((() {
-                                    if(allCollectibles.elementAt(index).getPrice == -1){
+                                    if(filteredList.elementAt(index).getPrice == -1){
                                       return '';}
 
-                                    return '\$'+allCollectibles.elementAt(index).getPrice.toString();}
+                                    return '\$'+filteredList.elementAt(index).getPrice.toString();}
                                   )(),
                                     style: TextStyle(
                                       fontSize:  26.0,
@@ -97,7 +98,7 @@ class CollectDisp extends StatelessWidget {
                                 Padding(
                                   padding: EdgeInsets.only(right: 30.0),
                                   child: Text(
-                                    allCollectibles.elementAt(index).getName+' - '+allCollectibles.elementAt(index).getOwner,
+                                    filteredList.elementAt(index).getName+' - '+filteredList.elementAt(index).getOwner,
                                     style:  TextStyle(
 
                                       fontSize:  17.0,
@@ -124,7 +125,7 @@ class CollectDisp extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Text(
-                              allCollectibles.elementAt(index).getDescription,
+                              filteredList.elementAt(index).getDescription,
                               style: TextStyle(
                                 fontSize:  17.0,
 

@@ -13,10 +13,10 @@ class Feed extends StatefulWidget {
   @override
   _FeedState createState() => _FeedState(tag);
 }
+var filteredList;
 
 class _FeedState extends State<Feed> {
   late String tag;
-  var filteredList;
   _FeedState(this.tag){
     filteredList = filter(tag);
   }
@@ -53,7 +53,7 @@ class _FeedState extends State<Feed> {
                     child: Column(
                       children: [
                         Container(
-                          child: Image.asset(allCollectibles.elementAt(index).getImagePath, fit: BoxFit.fitWidth,),
+                          child: Image.asset(filteredList.elementAt(index).getImagePath, fit: BoxFit.fitWidth,),
 
 
                         ),
@@ -63,10 +63,10 @@ class _FeedState extends State<Feed> {
                             Padding(
                               padding: EdgeInsets.only(left: 10.0, ),
                               child: Text((() {
-                                if(allCollectibles.elementAt(index).getPrice == -1){
+                                if(filteredList.elementAt(index).getPrice == -1){
                                   return '';}
 
-                                return '\$'+allCollectibles.elementAt(index).getPrice.toString();}
+                                return '\$'+filteredList.elementAt(index).getPrice.toString();}
                               )(),
                                 style: TextStyle(
                                   fontSize:  24.0,
@@ -82,7 +82,7 @@ class _FeedState extends State<Feed> {
                             Padding(
                               padding: EdgeInsets.only(right: 10.0),
                               child: Text(
-                                allCollectibles.elementAt(index).getName+' - '+allCollectibles.elementAt(index).getOwner,
+                                filteredList.elementAt(index).getName+' - '+filteredList.elementAt(index).getOwner,
                                 style:  TextStyle(
 
                                   fontSize:  17.0,

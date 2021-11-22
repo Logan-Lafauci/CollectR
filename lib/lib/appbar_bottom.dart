@@ -17,7 +17,19 @@ class _AppBarBotState extends State<AppBarBot> {
       child: Row(
         children: [
           IconButton(
-            icon: Icon(Icons.home), onPressed: () {},
+            icon: Icon(Icons.home), onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Container(
+                      child: Home()
+
+
+                  )
+
+                ),
+              );
+            },
             color: Colors.amber[400],
           ),
 

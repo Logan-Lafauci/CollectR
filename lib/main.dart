@@ -2,9 +2,8 @@
 import 'package:flutter/material.dart';
 import 'user.dart';
 import 'collectible.dart';
-import 'collect_disp.dart';
 import 'appbar_bottom.dart';
-import 'search.dart';
+import 'feed.dart';
 
 
 var allCollectibles = <Collectible>[];
@@ -36,20 +35,40 @@ void main() {
   User logan = User("Ignie", "Logan12345", 85);
   addCollectible(logan, 'Spiderman Torment Part 1',
       'This is the first issue of the Spiderman Torment story line.',
-      'assets/SM_Comic.JPEG', "BOOK");
+      'assets/SM_Comic.JPEG', "BOOK", price: 30.00);
 
-  addCollectible(logan, 'Childish Gambino Because of The Internet Vinyl',
+  addCollectible(logan, 'Because of The Internet Vinyl',
       'This is a vinyl of Donald Glover\'s second studio album.', 'assets/Childish_Vinyl.JPEG',
       "MUSIC", price: 49.95);
+
 
   addCollectible(logan, 'Luffy Gear Four Funko POP',
       'Limited Chalice Collectibles exclusive funko pop. It\'s been taken out of the box but kept in great condition and the box is undamaged.',
        'assets/Luffy_Pop.JPEG', "FIGURE", price: 45);
 
+  User Zack = User("Zack", "Zack12345", 69);
+
+  addCollectible(Zack, 'Mario Amiibo',
+      'Super Smash Bros. line of Mario Amiibo. Out of box, great condition.',
+      'assets/MarioAmiibo.jpg', "FIGURE");
+
+
+
+
+  addCollectible(Zack, 'Too Weird To Live, Too Rare To Die! Vinyl',
+      'Too Weird To Live, Too Rare To Die! by Panic! At The Disco.',
+      'assets/TooWeird.jpg', "MUSIC");
+
+  addCollectible(Zack, 'Scott Pilgrim Vol. 1',
+      'Volume 1 of Scott Pilgrim. In Color, Hardcover',
+      'assets/ScottPilgrimVol1.jpg', "BOOK", price: 17.49);
+
+
+
   User jai = User("Kahlese", "Jai62120", 90);
-  addCollectible(jai, 'Deadpool and Unicorn KeyChain',
-      'This is a Deadpool and Unicorn KeyChain.', 'assets/Deadpool_Keychain.jpg',
-      "ETC", price:15);
+  // addCollectible(jai, 'Deadpool and Unicorn KeyChain',
+  //     'This is a Deadpool and Unicorn KeyChain.', 'assets/DeadPool_KeyChain.jpg',
+  //     "ETC", price:15);
 
   addCollectible(jai, 'Amoung Us Plushie',
       'This is one out of the 8 Amoung Plushie Collection. In great condition, with a little dust.',
@@ -64,20 +83,28 @@ void main() {
       'It has been kept inside the box in great conditon and undamaged', 
       'assets/InosukeHashibira_Pop.jpg', "FIGURE", price: 59.99);
 
+  addCollectible(Zack, 'Mii Swordfighter Amiibo',
+      'Mii Swordfighter Amiibo. Out of box, great condition.',
+      'assets/MiiSwordfighterAmiibo.jpg', "FIGURE", price: 47.00);
+
   User donald = User("MusicGuy01", "it'smedonald", 95);
   addCollectible(donald, 'Igor Vinyl',
       'This is a vinyl of Tyler, the Creator\'s Hit album Igor. Has the tracks like boy is a gun, Earfquake, and more.',
       'assets/Igor_Vinyl.JPEG', "MUSIC", price: 49.95);
 
-  addCollectible(donald, 'In the Court of the Crimson King Vinyl',
+  addCollectible(donald, 'Court of the Crimson King Vinyl',
       'This is a vinyl of In the Court of the Crimson King created by the band King Crimson',
-      'assets/KC_Vinyl.JPEG', "MUSIC", price: 49.95);
+      'assets/KC_Vinyl.JPEG', "MUSIC");
+
+  addCollectible(Zack, 'Squirtle Amiibo',
+      'Squirtle Amiibo. Out of box, great condition.',
+      'assets/SquirtleAmiibo.jpg', "FIGURE", price: 15.99);
 
   addCollectible(logan, 'Chainsawman volume 1-3',
       'This is the first three volumes of chainsaw man. This is a amazing series created by Tatsuki Fujimoto',
       'assets/CM_Manga.jpg', "BOOK");
 
-  allCollectibles = filter("BOOK");
+  // allCollectibles = filter("MUSIC");
   /*This is for testing filter and it works!!
   * when using it we should create a screen full of the tags we can select from
   * then we create a new list instead of reassigning all collectibles
@@ -133,67 +160,167 @@ class Home extends StatelessWidget {
       body: Container(
         child: Padding(
           padding: EdgeInsets.only(top: 8.0),
-
           child: Container(
-            child: Expanded(
-              child: ListView.builder(
-                itemCount: allCollectibles.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Container(
-                        alignment: Alignment.center,
-                        color: Colors.grey[800],
-                        child: TextButton(
+                child: Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.all(8),
+                    children: <Widget>[
+
+                      TextButton(
                           onPressed: (){
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CollectDisp(index)
+                                builder: (context) => Feed('ALL')
 
                               ),
                             );
                           },
-                          child: Column(
-                            children: [
-                              Text(
-                                allCollectibles.elementAt(index).getName,
-                                style: TextStyle(
-                                  fontSize:  15.0,
+
+                            child: Container(
+                              height: 100,
+                              color: Colors.amber[700],
+                              child: Center(
+                                child: Text(
+                                  'All',
+                                  style:  TextStyle(
+
+                                    fontSize:  30.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[600],
+                                    fontFamily: 'Cairo',
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                      ),
+
+
+                      TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Feed('FIGURE')
+
+                            ),
+                          );
+                        },
+                        child: Container(
+                            height: 100,
+                            color: Colors.amber[600],
+                            child: Center(
+                              child: Text(
+                                'Figures',
+                                style:  TextStyle(
+
+                                  fontSize:  30.0,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.amber[400],
+                                  color: Colors.grey[600],
                                   fontFamily: 'Cairo',
                                 ),
                               ),
-                              Container(
-                                child: Image.asset(allCollectibles.elementAt(index).getImagePath),
-                                height: 350,
-                                width: 350,
+                            ),
+                          ),
+
+                      ),
+
+                      TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Feed('MUSIC')
+
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 100,
+                          color: Colors.amber[500],
+                          child: Center(
+                            child: Text(
+                              'Music',
+                              style:  TextStyle(
+
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[600],
+                                fontFamily: 'Cairo',
                               ),
-
-
-                            ],
+                            ),
                           ),
                         ),
 
+                      ),
 
+                      TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Feed('BOOK')
+
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 100,
+                          color: Colors.amber[400],
+                          child: Center(
+                            child: Text(
+                              'Books',
+                              style:  TextStyle(
+
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[600],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
+                          ),
+                        ),
 
                       ),
-                    ),
-                  );
-                },
+
+                      TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Feed('ETC')
+
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 100,
+                          color: Colors.amber[300],
+                          child: Center(
+                            child: Text(
+                              'Other',
+                              style:  TextStyle(
+
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[600],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      ),
+
+                    ],
+                  )
+                ),
               ),
-            ),
 
 
 
-
-
-
-          ),
-
-        ),
+                  ),
         color: Colors.black,
       ),
 

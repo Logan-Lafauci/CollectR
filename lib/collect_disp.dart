@@ -12,19 +12,26 @@ class CollectDisp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+
+
         appBar: AppBar(
-          title: Center(
-            child: Text(
-              'CollectR',
-              style: TextStyle(
-                fontSize:  20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.amber[300],
-                fontFamily: 'Cairo',
-              ),
-            ),
-          ),
           backgroundColor: Colors.grey[900],
+          // title: Center(
+          //   child: Text((() {
+          //     if(allCollectibles.elementAt(index).getPrice == -1){
+          //       return '';}
+          //
+          //     return '\$'+allCollectibles.elementAt(index).getPrice.toString();}
+          //   )(),
+          //     style: TextStyle(
+          //       fontSize:  20.0,
+          //       fontWeight: FontWeight.bold,
+          //       color: Colors.amber[300],
+          //       fontFamily: 'Cairo',
+          //     ),
+          //   ),
+          // ),
+
         ),
         body: Container(
           child: Padding(
@@ -38,59 +45,78 @@ class CollectDisp extends StatelessWidget {
                     children: <Widget>[
                       Column(
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 10.0),
-                            child: Text(
-                              allCollectibles.elementAt(index).getName,
-                              style: TextStyle(
-                                fontSize:  20.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.amber[300],
-                                fontFamily: 'Cairo',
-                              ),
+                          Container(
+
+                            child: Image.asset(
+                              allCollectibles.elementAt(index).getImagePath,
+                              fit: BoxFit.fitWidth,
                             ),
+
                           ),
+
+                          // Padding(
+                          //   padding: EdgeInsets.only(bottom: 10.0),
+                          //   child: Text((() {
+                          //     if(allCollectibles.elementAt(index).getPrice == -1){
+                          //       return 'Not For Sale';}
+                          //
+                          //     return '\$'+allCollectibles.elementAt(index).getPrice.toString();}
+                          //   )(),
+                          //     style: TextStyle(
+                          //       fontSize:  18.0,
+                          //       fontWeight: FontWeight.bold,
+                          //       color: Colors.amber[300],
+                          //       fontFamily: 'Cairo',
+                          //     ),
+                          //   ),
+                          //
+                          //
+                          // ),
                           Container(
                             child: Row(
                               children: [
-                                Spacer(),
-                                Spacer(),
-                                Text(
-                                  allCollectibles.elementAt(index).getOwner,
-                                  style: TextStyle(
-                                    fontSize:  13.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber[300],
-                                    fontFamily: 'Cairo',
-                                  ),
-                                ),
-                                Spacer(),
-                                Text((() {
-                                  if(allCollectibles.elementAt(index).getPrice == -1){
-                                    return '';}
+                                Padding(
+                                  padding: EdgeInsets.only(left: 30.0, ),
+                                  child: Text((() {
+                                    if(allCollectibles.elementAt(index).getPrice == -1){
+                                      return '';}
 
-                                  return '\$'+allCollectibles.elementAt(index).getPrice.toString();}
-                                )(),
-                                  style: TextStyle(
-                                    fontSize:  13.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.amber[300],
-                                    fontFamily: 'Cairo',
+                                    return '\$'+allCollectibles.elementAt(index).getPrice.toString();}
+                                  )(),
+                                    style: TextStyle(
+                                      fontSize:  26.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.amber[300],
+                                      fontFamily: 'Cairo',
+                                    ),
                                   ),
+
                                 ),
                                 Spacer(),
-                                Spacer(),
+
+                                Padding(
+                                  padding: EdgeInsets.only(right: 30.0),
+                                  child: Text(
+                                    allCollectibles.elementAt(index).getName+' - '+allCollectibles.elementAt(index).getOwner,
+                                    style:  TextStyle(
+
+                                      fontSize:  17.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey[200],
+                                      fontFamily: 'Cairo',
+                                    ),
+                                  ),
+                                ),
+
+
+
                               ],
                             ),
                           ),
                         ],
                       ),
                       Spacer(),
-                      Container(
-                        child: Image.asset(allCollectibles.elementAt(index).getImagePath),
-                        height: 350,
-                        width: 350,
-                      ),
+
                       Spacer(),
                       Padding(
                         padding: EdgeInsets.all(10.0),
@@ -100,9 +126,9 @@ class CollectDisp extends StatelessWidget {
                             child: Text(
                               allCollectibles.elementAt(index).getDescription,
                               style: TextStyle(
-                                fontSize:  15.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.amber[300],
+                                fontSize:  17.0,
+
+                                color: Colors.grey[200],
                                 fontFamily: 'Cairo',
                               ),
                             ),
@@ -115,15 +141,21 @@ class CollectDisp extends StatelessWidget {
 
                         child: TextButton(
                           onPressed: (){},
-                          child: Text(
-                            'Purchase',
-                            style: TextStyle(
-                              fontSize:  15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[900],
-                              fontFamily: 'Cairo',
+                          child: Center(
+                            child: Text(
+                              'Purchase',
+                              style: TextStyle(
+                                fontSize:  15.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[900],
+                                fontFamily: 'Cairo',
+                              ),
                             ),
                           ),
+
+
+
+
                         ),
                         color: Colors.amber[300],
 

@@ -17,15 +17,11 @@ class _AppBarBotState extends State<AppBarBot> {
       child: Row(
         children: [
           IconButton(
-            icon: Icon(Icons.home), onPressed: () {
+            icon: const Icon(Icons.home), onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Container(
-                      child: Home()
-
-
-                  )
+                  builder: (context) => const Home()
 
                 ),
               );
@@ -34,26 +30,22 @@ class _AppBarBotState extends State<AppBarBot> {
           ),
 
 
-          Spacer(),
+          const Spacer(),
           IconButton(
-            icon: Icon(Icons.search), onPressed: () {
+            icon: const Icon(Icons.search), onPressed: () {
             showSearch(context: context, delegate: DataSearch());
           },
             color: Colors.amber[400],
           ),
 
-          Spacer(),
+          const Spacer(),
 
           IconButton(
-            icon: Icon(Icons.add), onPressed: (){
+            icon: const Icon(Icons.add), onPressed: (){
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Container(
-                      child: Add()
-
-
-                  )
+                  builder: (context) => const Add()
 
               ),
             );
@@ -61,9 +53,9 @@ class _AppBarBotState extends State<AppBarBot> {
             color: Colors.amber[400],
           ),
 
-          Spacer(),
+          const Spacer(),
           IconButton(
-            icon: Icon(Icons.person_rounded), onPressed: () {},
+            icon: const Icon(Icons.person_rounded), onPressed: () {},
             color: Colors.amber[400],
           ),
 

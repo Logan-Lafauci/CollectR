@@ -5,6 +5,8 @@ import 'user.dart';
 import 'appbar_bottom.dart';
 
 class Add extends StatefulWidget {
+  const Add({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return AddScreenState();
@@ -107,7 +109,7 @@ class AddScreenState extends State<Add> {
           fontFamily: 'Cairo',
         ),
       ),
-      keyboardType:TextInputType.numberWithOptions(decimal: true),
+      keyboardType:const TextInputType.numberWithOptions(decimal: true),
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}'))
       ],
@@ -174,7 +176,7 @@ class AddScreenState extends State<Add> {
           child: Container(
             child: SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.all(24),
+                margin: const EdgeInsets.all(24),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -185,7 +187,7 @@ class AddScreenState extends State<Add> {
                       _buildTag(),
                       _buildPrice(),
                       _buildImagePath(),
-                      SizedBox(height: 100),
+                      const SizedBox(height: 100),
 
                       Container(
                         child: TextButton(
@@ -207,17 +209,13 @@ class AddScreenState extends State<Add> {
 
                             addCollectible(owner, _name, _description, _imagePath, _tag, price: _price);
 
-
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Home()
+                                  builder: (context) => const Home()
 
                               ),
                             );
-                            //make this page look bettter
-                            //fix the bug when the user presses the add button again
-                            //Send to API
                           },
 
                         ),
@@ -237,7 +235,7 @@ class AddScreenState extends State<Add> {
         ),
 
 
-        bottomNavigationBar: AppBarBot(),
+        bottomNavigationBar: const AppBarBot(),
         backgroundColor: Colors.black,
       );
 

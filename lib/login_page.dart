@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 
-void main() => runApp(MaterialApp(
+void main() => runApp(const MaterialApp(
   home: test()
 ));
 
 
+// ignore: camel_case_types
 class test extends StatelessWidget {
   const test({Key? key}) : super(key: key);
 
@@ -54,7 +55,7 @@ class test extends StatelessWidget {
                if(_passwordInput.text=='password'){
                  Navigator.push(
                    context,
-                   MaterialPageRoute(builder: (context) => Home()),
+                   MaterialPageRoute(builder: (context) => const Home()),
                  );
                }
                else{

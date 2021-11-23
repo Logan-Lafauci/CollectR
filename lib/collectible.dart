@@ -7,13 +7,9 @@ class Collectible {
   String _tag;
   var commentList = <String>[];
 
-  //To display image use Image.asset() with this variable as the parameter
-
   Collectible(this._name, this._description, this._owner, this._imagePath, this._tag, {price = -1}) {
     _price = price;
   }
-
-// The symbol => means that the value it's pointing to is getting returned
 
   String get getName => _name;
 
@@ -52,6 +48,6 @@ class Collectible {
   }
 
   void addComment(String comment){
-      commentList.add(comment);
+    commentList.add(comment);
   }
 }

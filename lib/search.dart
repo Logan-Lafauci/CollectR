@@ -36,14 +36,14 @@ class DataSearch extends SearchDelegate<String?> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-          icon: Icon(Icons.clear),
+          icon: const Icon(Icons.clear),
           onPressed: () {
             query = "";
           })
     ];
   }
 
-  String? fix = null;
+  String? fix;
 
   @override
   Widget? buildLeading(BuildContext context) {
@@ -71,11 +71,11 @@ class DataSearch extends SearchDelegate<String?> {
         leading: const Icon(Icons.location_city),
         title: RichText(text: TextSpan(
           text: suggestionList[index].substring(0,query.length),
-          style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+          style: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
           children: [
             TextSpan(
                 text: suggestionList[index].substring(query.length),
-                style: TextStyle(color: Colors.grey))
+                style: const TextStyle(color: Colors.grey))
           ],
         ),
         ),

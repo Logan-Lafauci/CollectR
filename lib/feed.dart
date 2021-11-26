@@ -20,6 +20,7 @@ var filteredList;
 class _FeedState extends State<Feed> {
   late String tag;
   _FeedState(this.tag){
+    filterTag = tag;
     filteredList = filter(tag);
   }
 

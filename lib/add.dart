@@ -1,3 +1,4 @@
+import 'package:collectr/feed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'main.dart';
@@ -18,13 +19,30 @@ class AddScreenState extends State<Add> {
   String _name = "";
   String _description = "";
   double _price = -1.0;
+  int _detail = 0;
   String _imagePath = "";
-  String _tag = "";
+  String _tag = filterTag;
+  
+  String detailText(_tag)
+  {
+    print(_tag);
+    if(_tag == 'MUSIC'){
+      return 'Number of songs (Optional)';
+    }
+    else if(_tag == 'BOOK'){
+      return 'Number of Pages (Optional)';
+    }
+    else if(_tag == 'ETC' || _tag == 'FIGURE'){
+      return 'Size of item in inches (Optional)';
+    }
+    return 'Detailed number related to tag (Optional)';
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget _buildName(){
     return TextFormField(
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: 'Name',
         labelStyle: TextStyle(
@@ -50,6 +68,7 @@ class AddScreenState extends State<Add> {
 
   Widget _buildDescription(){
     return TextFormField(
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: 'Description',
         labelStyle: TextStyle(
@@ -75,6 +94,7 @@ class AddScreenState extends State<Add> {
 
   Widget _buildTag(){
     return TextFormField(
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: 'Tag',
         labelStyle: TextStyle(
@@ -100,6 +120,7 @@ class AddScreenState extends State<Add> {
 
   Widget _buildPrice(){
     return TextFormField(
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: 'Price (Optional)',
         labelStyle: TextStyle(
@@ -126,9 +147,38 @@ class AddScreenState extends State<Add> {
     );
   }
 
+   Widget _buildDetail(){
+    return TextFormField(
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+        labelText: detailText(_tag),
+        labelStyle: TextStyle(
+          fontSize:  16.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.amber[300],
+          fontFamily: 'Cairo',
+        ),
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      maxLength: 10,
+      onSaved: (value) {
+        if (value == null || value.isEmpty) {
+          _detail = 0;
+        }
+        else
+        {
+          _detail = int.parse(value);
+        }
+      },
+    );
+  }
+
   Widget _buildImagePath(){
     return TextFormField(
-      
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: 'Image name',
         labelStyle: TextStyle(
@@ -184,8 +234,9 @@ class AddScreenState extends State<Add> {
                     children: <Widget>[
                       _buildName(),
                       _buildDescription(),
-                      _buildTag(),
+                      if(filterTag == 'ALL') _buildTag(),
                       _buildPrice(),
+                      _buildDetail(),
                       _buildImagePath(),
                       const SizedBox(height: 100),
 
@@ -235,7 +286,7 @@ class AddScreenState extends State<Add> {
         ),
 
 
-        bottomNavigationBar: const AppBarBot(),
+        bottomNavigationBar:  AppBarBot(),
         backgroundColor: Colors.black,
       );
 

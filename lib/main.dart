@@ -6,6 +6,7 @@ import 'feed.dart';
 
 
 var allCollectibles = <Collectible>[];
+String filterTag = 'ALL';
 
 void addCollectible(User poster, String name, String description, String imagePath, String tag, {double price = -1.0}){
   Collectible newPost = Collectible(name, description, poster.getUsername, imagePath, tag, price: price);

@@ -153,159 +153,193 @@ class Home extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(8),
-              children: <Widget>[
+            child: GridView.count(
+              // Create a grid with 2 columns. If you change the scrollDirection to
+              // horizontal, this produces 2 rows.
+                crossAxisCount: 2,
+                // Generate 100 widgets that display their index in the List.
+                children: [
 
-                TextButton(
+                  TextButton(
                     onPressed: (){
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Feed('ALL')
-
+                            builder: (context) => Feed('ALL')
                         ),
                       );
                     },
-
-                      child: Container(
-                        height: 100,
-                        color: Colors.amber[700],
-                        child: Center(
-                          child: Text(
-                            'All',
-                            style:  TextStyle(
-
-                              fontSize:  30.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[600],
-                              fontFamily: 'Cairo',
-                            ),
-                          ),
-                        ),
-                      ),
-
-                ),
-
-
-                TextButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Feed('FIGURE')
-
-                      ),
-                    );
-                  },
-                  child: Container(
-                      height: 100,
-                      color: Colors.amber[600],
+                    child: Container(
+                      color: Colors.amber[500],
                       child: Center(
-                        child: Text(
-                          'Figures',
-                          style:  TextStyle(
+                        child: Column(
+                          children: [
+                            Text(
+                              'All',
+                              style:  TextStyle(
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
 
-                            fontSize:  30.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[600],
-                            fontFamily: 'Cairo',
-                          ),
-                        ),
-                      ),
-                    ),
-
-                ),
-
-                TextButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Feed('MUSIC')
-
-                      ),
-                    );
-                  },
-                  child: Container(
-                    height: 100,
-                    color: Colors.amber[500],
-                    child: Center(
-                      child: Text(
-                        'Music',
-                        style:  TextStyle(
-
-                          fontSize:  30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[600],
-                          fontFamily: 'Cairo',
+                            Icon(
+                              Icons.all_inbox,
+                              color: Colors.grey[700],
+                              size: 100,
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
 
-                ),
 
-                TextButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Feed('BOOK')
+                  TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Feed('FIGURE')
+                        ),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.amber[500],
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Figures',
+                              style:  TextStyle(
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
 
-                      ),
-                    );
-                  },
-                  child: Container(
-                    height: 100,
-                    color: Colors.amber[400],
-                    child: Center(
-                      child: Text(
-                        'Books',
-                        style:  TextStyle(
-
-                          fontSize:  30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[600],
-                          fontFamily: 'Cairo',
+                            Icon(
+                              Icons.person,
+                              color: Colors.grey[700],
+                              size: 100,
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
 
-                ),
 
-                TextButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Feed('ETC')
+                  TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Feed('MUSIC')
+                        ),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.amber[500],
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Music',
+                              style:  TextStyle(
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
 
-                      ),
-                    );
-                  },
-                  child: Container(
-                    height: 100,
-                    color: Colors.amber[300],
-                    child: Center(
-                      child: Text(
-                        'Other',
-                        style:  TextStyle(
-
-                          fontSize:  30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[600],
-                          fontFamily: 'Cairo',
+                            Icon(
+                              Icons.album,
+                              color: Colors.grey[700],
+                              size: 100,
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
 
-                ),
 
-              ],
-            )
+
+                  TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Feed('BOOK')
+                        ),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.amber[500],
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Books',
+                              style:  TextStyle(
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
+
+                            Icon(
+                              Icons.menu_book_sharp,
+                              color: Colors.grey[700],
+                              size: 100,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Feed('ETC')
+                        ),
+                      );
+                    },
+                    child: Container(
+                      color: Colors.amber[500],
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Other',
+                              style:  TextStyle(
+                                fontSize:  30.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                                fontFamily: 'Cairo',
+                              ),
+                            ),
+
+                            Icon(
+                              Icons.hardware,
+                              color: Colors.grey[700],
+                              size: 100,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ]
+            ),
           ),
           ),
         color: Colors.black,
